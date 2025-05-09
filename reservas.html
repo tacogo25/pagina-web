@@ -3,21 +3,129 @@
 <head>
   <meta charset="UTF-8">
   <title>Reservas - TACOGO</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff8ee;
+      text-align: center;
+      padding: 20px;
+    }
+    form, #comprobante {
+      background-color: #ffffff;
+      padding: 20px;
+      margin: auto;
+      border-radius: 10px;
+      max-width: 400px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    input, select, button {
+      width: 90%;
+      margin: 10px 0;
+      padding: 10px;
+      font-size: 1rem;
+    }
+    .boton {
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #anular {
+      background-color: #c0392b;
+      color: white;
+    }
+    #anular:hover {
+      background-color: #a93226;
+    }
+    #otra {
+      background-color: #3498db;
+      color: white;
+    }
+    #otra:hover {
+      background-color: #2980b9;
+    }
+    .btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #e67e22;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #d35400;
+    }
+  </style>
 </head>
 <body>
+
   <h1>Reservar en TACOGO</h1>
-  <form>
-    <input type="text" placeholder="Nombre de la reserva" required><br>
-    <input type="date" required><br>
-    <input type="time" required><br>
-    <input type="number" placeholder="Cantidad de personas" required><br>
+
+  <form id="formulario">
+    <input type="text" id="nombre" placeholder="Nombre de la reserva" required><br>
+    <input type="date" id="fecha" required><br>
+    <input type="time" id="hora" required><br>
+    <input type="number" id="personas" placeholder="Cantidad de personas" required><br>
     <label>¿Desea evento formal?</label>
-    <select>
+    <select id="evento">
       <option>No</option>
       <option>Sí - con sillas formales</option>
       <option>Sí - con sillas del restaurante</option>
     </select><br>
     <button type="submit">Reservar</button>
   </form>
+
+  <div id="comprobante" style="display:none;">
+    <h2>✅ Reserva Realizada</h2>
+    <p id="info-reserva"></p>
+    <button class="boton" id="anular">Anular reserva</button>
+    <button class="boton" id="otra">Realizar otra reserva</button>
+  </div>
+
+  <br>
+  <a href="inicio.html">
+    <button class="btn">Volver al inicio</button>
+  </a>
+
+  <script>
+    const form = document.getElementById('formulario');
+    const comprobante = document.getElementById('comprobante');
+    const infoReserva = document.getElementById('info-reserva');
+    const anularBtn = document.getElementById('anular');
+    const otraBtn = document.getElementById('otra');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const nombre = document.getElementById('nombre').value;
+      const fecha = document.getElementById('fecha').value;
+      const hora = document.getElementById('hora').value;
+      const personas = document.getElementById('personas').value;
+      const evento = document.getElementById('evento').value;
+
+      infoReserva.innerHTML = `
+        <strong>Nombre:</strong> ${nombre}<br>
+        <strong>Fecha:</strong> ${fecha}<br>
+        <strong>Hora:</strong> ${hora}<br>
+        <strong>Personas:</strong> ${personas}<br>
+        <strong>Evento formal:</strong> ${evento}
+      `;
+
+      form.style.display = 'none';
+      comprobante.style.display = 'block';
+    });
+
+    anularBtn.addEventListener('click', function () {
+      form.reset();
+      form.style.display = 'block';
+      comprobante.style.display = 'none';
+    });
+
+    otraBtn.addEventListener('click', function () {
+      form.reset();
+      form.style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
 </body>
 </html>
