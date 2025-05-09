@@ -3,16 +3,99 @@
 <head>
   <meta charset="UTF-8">
   <title>Reseñas - TACOGO</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background-color: #fff8ee;
+    }
+    textarea {
+      width: 100%;
+      height: 80px;
+      padding: 10px;
+      resize: none;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #e67e22;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #d35400;
+    }
+    .reseña {
+      background-color: #f9e5c8;
+      border-radius: 8px;
+      padding: 10px;
+      margin-top: 10px;
+    }
+    .btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #e67e22;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #d35400;
+    }
+  </style>
 </head>
 <body>
+
   <h1>Reseñas de clientes</h1>
-  <form>
-    <textarea placeholder="Escribe tu reseña aquí..."></textarea><br>
+
+  <form id="reseña-form">
+    <textarea id="texto-reseña" placeholder="Escribe tu reseña aquí..." required></textarea><br>
     <button type="submit">Publicar</button>
   </form>
-  <div>
-    <!-- Aquí aparecerán reseñas simuladas -->
-    <p><strong>Juan:</strong> ¡Excelente comida!</p>
+
+  <div id="lista-reseñas">
+    <div class="reseña"><strong>Juan:</strong> ¡Excelente comida!</div>
   </div>
+
+  <br>
+  <a href="inicio.html">
+    <button class="btn">Volver al inicio</button>
+  </a>
+
+  <script>
+    const form = document.getElementById('reseña-form');
+    const lista = document.getElementById('lista-reseñas');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault(); // evita recargar la página
+      const texto = document.getElementById('texto-reseña').value;
+
+      // Intenta obtener ubicación
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          const lat = position.coords.latitude.toFixed(3);
+          const lon = position.coords.longitude.toFixed(3);
+          agregarReseña(`Tú (Ubicación: ${lat}, ${lon})`, texto);
+        }, function () {
+          agregarReseña('Tú', texto);
+        });
+      } else {
+        agregarReseña('Tú', texto);
+      }
+
+      form.reset();
+    });
+
+    function agregarReseña(nombre, texto) {
+      const nueva = document.createElement('div');
+      nueva.className = 'reseña';
+      nueva.innerHTML = `<strong>${nombre}:</strong> ${texto}`;
+      lista.appendChild(nueva);
+    }
+  </script>
+
 </body>
 </html>
