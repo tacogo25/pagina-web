@@ -2,9 +2,50 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Ubicaciones - TACOGO</title>
+  <title>Menú - TACOGO</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #fff8ee;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      color: #d35400;
+    }
+    iframe {
+      width: 90%;
+      height: 600px;
+      border: 2px solid #e67e22;
+      border-radius: 8px;
+    }
+    .btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #e67e22;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #d35400;
+    }
+  </style>
 </head>
 <body>
-  <h1>Próximamente en Ciudad de Guatemala</h1>
+
+  <h1>Menú de TACOGO</h1>
+
+  <iframe src="TACOGOMENU.pdf" type="application/pdf">
+    Tu navegador no soporta mostrar PDFs. Puedes <a href="TACOGOMENU.pdf">descargar el menú aquí</a>.
+  </iframe>
+
+  <br>
+  <a href="inicio.html">
+    <button class="btn">Volver al inicio</button>
+  </a>
+
 </body>
 </html>
