@@ -13,47 +13,45 @@
       background-position: center;
       background-repeat: no-repeat;
       color: white;
+      text-align: center;
     }
     header {
       background-color: rgba(0, 0, 0, 0.7);
-      text-align: center;
-      padding: 2rem;
+      padding: 3rem 1rem;
     }
     header h1 {
       font-size: 3rem;
-      margin: 0;
+      margin-bottom: 1rem;
     }
-    .form-section {
-      background-color: rgba(255, 255, 255, 0.9);
-      color: #000;
-      padding: 2rem;
-      text-align: center;
-      max-width: 400px;
-      margin: 2rem auto;
-      border-radius: 10px;
+    header p {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
     }
-    .form-section input, .form-section button {
-      display: block;
-      margin: 1rem auto;
-      padding: 0.7rem;
-      width: 90%;
-      max-width: 300px;
+    .btn {
+      padding: 1rem 2rem;
+      margin: 0.5rem;
+      font-size: 1rem;
+      background-color: #e67e22;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn:hover {
+      background-color: #d35400;
     }
   </style>
 </head>
 <body>
+
   <header>
     <h1>TACOGO</h1>
+    <p>¡Bienvenido! Vive al estilo mexicano.</p>
+    <a href="login.html" class="btn">Iniciar Sesión</a>
+    <a href="registro.html" class="btn">Registrarse</a>
   </header>
 
-  <section class="form-section">
-    <h2>Iniciar Sesión</h2>
-    <form action="inicio.html">
-      <input type="email" placeholder="Correo electrónico" required>
-      <input type="password" placeholder="Contraseña" required>
-      <button type="submit">Entrar</button>
-    </form>
-    <p>¿No tienes cuenta? <a href="#registro">Regístrate ahora</a></p>
-  </section>
 </body>
 </html>
+
